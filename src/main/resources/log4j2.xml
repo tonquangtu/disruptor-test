@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn"
+               packages="org.apache.logging.log4j.core,io.sentry.log4j2">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%d{yyyy-MM-dd HH:mm:ss} [%.15t] %-5p %c{2}:%L - %m%n"/>
+        </Console>
+        <Console name="ErrorConsole" target="SYSTEM_ERR">
+            <PatternLayout
+                    pattern="%d{yyyy-MM-dd HH:mm:ss} [%.15t] %-5p %c{2}:%L - %m%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="all">
+            <AppenderRef ref="Console" level="info"/>
+            <AppenderRef ref="ErrorConsole" level="error" />
+        </Root>
+        <Logger name="vn.tuton.disruptor.test" level="DEBUG" additivity="false">
+            <Appender-ref ref="Console" level="DEBUG"/>
+        </Logger>
+    </Loggers>
+</Configuration>
